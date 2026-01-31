@@ -1,8 +1,8 @@
 // change this so nothing conflits 
-int in1 = 9;
-int in2 = 8;
-int in3 = 7;
-int in4 = 6;
+int in1 = A5;
+int in2 = A4;
+int in3 = A3;
+int in4 = A2;
 
 #define S0 4
 #define S1 5
@@ -40,6 +40,12 @@ void setup() {
 
 }
 
+unsigned int readColor() {
+  // pulseIn measures LOW time of output wave
+  return pulseIn(OUT, LOW);
+}
+
+
 void loop() {
   // put your main code here, to run repeatedly:
   digitalWrite(TRIG_PIN, LOW);
@@ -47,6 +53,50 @@ void loop() {
   digitalWrite(TRIG_PIN,  HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIG_PIN, LOW);
+
+  // RED
+  digitalWrite(S2, LOW);
+  digitalWrite(S3, LOW);
+  unsigned int red = 255 - readColor();
+
+  // GREEN
+  digitalWrite(S2, HIGH);
+  digitalWrite(S3, HIGH);
+  unsigned int green = 255 - readColor();
+
+  // BLUE
+  digitalWrite(S2, LOW);
+  digitalWrite(S3, HIGH);
+  unsigned int blue = 255 - readColor();
+
+
+  // varible declaration
+
+  char currentColor = ;
+
+  // do I even need current color
+  if (93 <= red && red <= 120 && 85 <= green && green <= 95 && 110 <= blue && blue <= 115) {
+    currentColor = 'B';
+    followLine('B');
+    
+
+
+  } else if (220 <= red && red <= 225 && 140 <= green && green <= 146 && 165 <= blue && blue <= 170) {
+    currentColor = 'r';
+    followLine('r');
+
+  } else if (190 <= red && red <= 195 && 210 <= green && green <= 220 && 198 <= blue && blue <= 202) {
+    currentColor = 'g'
+    followLine('g');
+
+  } else if (159 <= red && red <= 170 && 180 <= green && green <= 184 && 210 <= blue && blue <= 217) {
+    // retrieve block process
+
+  } else {
+    currentColor = 'p'
+  }
+
+
   
 
   const unsigned long duration= pulseIn(ECHO_PIN, HIGH);
@@ -66,11 +116,14 @@ void loop() {
 }
 
 
-void followLine(int r, int g, int b) {
+void followLine(char colorType) {
   // detect color
-  if () {
-
+  if (colorType == 'r' || colorType == 'g' || colorType == 'B') {
+    moveRight(500);
+  } else {
+    moveLeft(500);
   }
+  
 }
 
 // adjust in case flipped 
@@ -124,7 +177,7 @@ void rotateRight(int time) {
 
 }
 
-voit rotateLeft(int time) {
+void rotateLeft(int time) {
   digitalWrite(in1, LOW);
   digitalWrite(in2, HIGH);
   // motor B
