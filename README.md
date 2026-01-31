@@ -17,9 +17,10 @@ During this section, the robot must be able to:
 - Detect green
 - Follow a green path
 - Drop off a box
+
 At the end of the green path, code will be reuploaded to the robot.
 
-# Ramp Traversal (Straight Ramp)
-- 
+# Ramp Traversal (Black Path)
+The robot will trace a brown path with a black line as a guide. If doing the straight ramp, the robot will only need to go straight and climb against gravity. If doing the curved ramp, the robot will need to turn as well while climbing. It will cross over a blue ring, then a red ring, then a green ring. It will stop when it lands on the black square in the centre. When it reaches this point, the code will be reuploaded. 
 
 # Target Shooting (Raised Platform)
