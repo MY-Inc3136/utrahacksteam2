@@ -35,3 +35,4 @@ The robot will pick up the ball. The robot can either launch or shoot the ball a
 - Pick up ball
 - Shoot/launch ball
 - Detect obstructions
+- Detect colour
