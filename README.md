@@ -7,12 +7,19 @@ The robot must pick up a box which acts as an "entry key" to the different secti
 # Initial (Black Path)
 The robot will go forward on the black path and pick up the box. After picking up the box, it will move forward until it detects **red**. It will then turn a measured number of degrees towards the right side of the red path. It will keep going forward on the red path to drop off the box. After dropping off the box, it will keep moving forward on the red path and reach the reupload point. At the reupload point, we will reupload coad for the Obstacle Course section.
 
-# Obstacle Course (Red Path)
-- Path with sharp turns
-- 2 obstructions, one of which is on a turn
+# Obstacle Course (Red Path) + Transfer to Ramp Traversal (Green Path)
+During this section, the robot must be able to:
+- Follow a **red** path
+- Make sharp turns
+- Detect obstructions
+- Navigate around obstructions
+- Pick up a box
+- Detect green
+- Follow a green path
+- Drop off a box
+At the end of the green path, code will be reuploaded to the robot.
+
+# Ramp Traversal (Straight Ramp)
 - 
-
-# Ramp Traversal (Green Path)
-
 
 # Target Shooting (Raised Platform)
