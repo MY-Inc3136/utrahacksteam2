@@ -24,3 +24,14 @@ At the end of the green path, code will be reuploaded to the robot.
 The robot will trace a brown path with a black line as a guide. If doing the straight ramp, the robot will only need to go straight and climb against gravity. If doing the curved ramp, the robot will need to turn as well while climbing. It will cross over a blue ring, then a red ring, then a green ring. It will stop when it lands on the black square in the centre. When it reaches this point, the code will be reuploaded. 
 
 # Target Shooting (Raised Platform)
+The robot will pick up the ball. The robot can either launch or shoot the ball after picking it up. It should aim for the blue ring, which is behind the green ring and the red ring. The ball should be as close to the blue zone as possible and cannot bounce or hit walls. 
+
+# Essential Functions
+- Move forward
+- Turn right
+- Turn left
+- Pick up box
+- Drop box
+- Pick up ball
+- Shoot/launch ball
+- Detect obstructions
