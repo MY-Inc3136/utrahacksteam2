@@ -1,7 +1,7 @@
 // IR Sensor Test Code
 // Wittle pookie edition 💕
 
-int irPin = 2;      // IR sensor OUT pin
+int irPin = 9;      // IR sensor OUT pin
 int irValue = 0;   // Variable to store sensor reading
 
 void setup() {

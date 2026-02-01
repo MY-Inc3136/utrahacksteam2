@@ -5,6 +5,9 @@ int in4 = A2;
 int enA = 5;
 int enB = 3;
 
+// flags
+bool has_box = false;
+
 #define S0 4
 #define S1 9     // FIXED (was 1 — Serial conflict)
 #define S2 6
@@ -91,15 +94,18 @@ void loop() {
   followLine(line);
 
 
-
-
-
   bool obstruction_detected = obstruction_IR();
   if (obstruction_detected) {
     reroute();
     if (line == LINE_NONE) {
-      break;
+      continue;
     }
+  }
+
+  bool box_detected = box_US();
+  if (box_detected) {
+    pickUp();
+    has_box = true;
   }
 
   // for (int pos = 104; pos <= 134; pos += 1) {  // rotate slowly from 0 degrees to 180 degrees, one by one degree
@@ -254,4 +260,41 @@ bool obstruction_IR() {
   }
 
   delay(100); // Small delay for stability
+}
+
+bool box_US() {
+  
+  long distance = get_distance();
+
+  // FOR DEBUGGING
+  Serial.print("Box detected at");
+  Serial.print(distance);
+  Serial.print(" cm, "); 
+  
+  // If the distance to the nearest object is within range
+  if(distance <= obstruction_range) {
+    Serial.println("within range => pickup");
+    return true; // TRUE, there is an obstruction detected
+    
+  } else {
+    Serial.println("not within range => don't pick up");
+    return false; // FALSE, there is no obstruction detected
+  }
+  
+}
+
+long get_distance() {
+
+  long duration;
+  
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(ECHO_PIN, LOW);
+
+  duration = pulseIn(ECHO_PIN, HIGH, 20000);
+
+  return duration * 0.034 / 2;
+  
 }
