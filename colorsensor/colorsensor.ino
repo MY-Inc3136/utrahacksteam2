@@ -44,11 +44,11 @@ void loop() {
   unsigned int blue = readColor();
 
   Serial.print("R: ");
-  Serial.print(red);
+  Serial.print(255 - red);
   Serial.print("  G: ");
-  Serial.print(green);
+  Serial.print(255 - green);
   Serial.print("  B: ");
-  Serial.println(blue);
+  Serial.println(255 - blue);
 
   delay(500);
 }
