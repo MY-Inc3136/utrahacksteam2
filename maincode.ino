@@ -37,6 +37,9 @@ void setup() {
   digitalWrite(S1, LOW);
   Serial.begin(9600);
 
+  servo.attach(13);
+  servo.write(0);
+
 
 }
 
@@ -72,7 +75,8 @@ void loop() {
 
   // varible declaration
 
-  char currentColor = ;
+  char currentColor;
+  int numBlue = 0;
 
   // do I even need current color
   if (93 <= red && red <= 120 && 85 <= green && green <= 95 && 110 <= blue && blue <= 115) {
@@ -90,12 +94,21 @@ void loop() {
     followLine('g');
 
   } else if (159 <= red && red <= 170 && 180 <= green && green <= 184 && 210 <= blue && blue <= 217) {
-    // retrieve block process
+    numBlue++;
+    
+
 
   } else {
     currentColor = 'p'
   }
 
+  if (numBlue == 1) {
+    pickup();
+  } else if (numBlue == 2) {
+    drop67gonner();
+  }
+  
+  // if numBlue == 2, then drop
 
   
 
@@ -185,3 +198,24 @@ void rotateLeft(int time) {
   digitalWrite(in4, LOW);
   delay(time);
 } 
+
+void pickUp() {
+  rotateLeft(1000);
+  moveBackwards(500);
+  for (int pos = 0; pos <= 30; pos += 1) {  // rotate slowly from 0 degrees to 30 degrees, one by one degree
+    // in steps of 1 degree
+    servo.write(pos);  // control servo to go to position in variable 'pos'
+    delay(15);         // waits 10ms for the servo to reach the position
+  }
+
+}
+
+void drop67gooner() {
+  rotateRight(1000);
+  for (int pos = 30; pos >= 0; pos -= 1) {  // rotate from 45 degrees to 0 degrees, one by one degree
+    servo.write(pos);                        // control servo to go to position in variable 'pos'
+    delay(15);                               // waits 10ms for the servo to reach the position
+  }
+  moveForwards(500);
+  rotateLeft(1000);
+}
