@@ -26,6 +26,7 @@ enum LineColor {
 };
 
 int obstruction_range = 5;
+int box_range = 14;
 int numBlue = 0;
 
 void setup() {
@@ -46,7 +47,7 @@ void setup() {
 
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
-  servo.attach(13);  // attaches the servo on pin 9 to the servo objectư
+  servo.attach(13);  // attaches the servo on pin 9 to the servo object
 
   servo.write(104);
 
@@ -271,7 +272,7 @@ bool box_US() {
   Serial.print(" cm, "); 
   
   // If the distance to the nearest object is within range
-  if(0 < distance && distance <= obstruction_range) {
+  if(0 < distance && distance <= box_range) {
     Serial.println("within range => pickup");
     return true; // TRUE, there is an obstruction detected
     
