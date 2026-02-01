@@ -148,9 +148,10 @@ void moveFoward(int time) { // in milliseconds
   delay(time);
 }
 
+// Code movements
 void moveRight(int time) {
   // motor A
-  digitalWrite(in1, HIGH);
+  digitalWrite(in1, HIGH); // Based on wiring motors
   digitalWrite(in2, LOW);
   // motor B
   digitalWrite(in3, LOW);
