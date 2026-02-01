@@ -98,7 +98,7 @@ void loop() {
   if (obstruction_detected) {
     reroute();
     if (line == LINE_NONE) {
-      continue;
+      // break;
     }
   }
 
@@ -121,7 +121,6 @@ void loop() {
   // }
   
  
-
 }
 
 LineColor senseLine(int r, int g, int b) {
@@ -272,7 +271,7 @@ bool box_US() {
   Serial.print(" cm, "); 
   
   // If the distance to the nearest object is within range
-  if(distance <= obstruction_range) {
+  if(0 < distance && distance <= obstruction_range) {
     Serial.println("within range => pickup");
     return true; // TRUE, there is an obstruction detected
     
